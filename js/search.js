@@ -1,3 +1,5 @@
+browser.tabs.remove(tab.id);
+
 String.prototype.replaceChars = function(character, replacement){
     var str = this;
     var a;
