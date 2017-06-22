@@ -1,66 +1,64 @@
-String.prototype.replaceChars = function(character, replacement){
-    var str = this;
-    var a;
-    var b;
-    for(var i=0; i < str.length; i++){
-        if(str.charAt(i) == character){
-            a = str.substr(0, i) + replacement;
-            b = str.substr(i + 1);
-            str = a + b;
-        }
-    }
-    return str;
-}
+var searchLinks = {
+    amazon: "http://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&field-keywords=",
+    chan: "http://boards.4chan.org/&/catalog#s=",
+    duckduckgo: "https://duckduckgo.com/?q=",
+    github: "https://github.com/search?utf8=✓&q=",
+    reddit: "https://www.reddit.com/search?q=",
+    stackoverflow: "https://stackoverflow.com/search?q=",
+    wikipedia: "https://en.wikipedia.org/w/index.php?search=",
+    youtube: "https://www.youtube.com/results?search_query="
+};
  
 function search(query){
-    switch(query.substr(0, 2)){
-        case "-a":
-            query = query.substr(3);
-            window.location = "http://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&field-keywords=" +
-                query.replaceChars(" ", "+");
+    var queryString = query.split(" ",query.length+1);
+    var param = queryString[0];
+    queryString = queryString.slice(1);
+
+    switch(param){ // All possible search cases so far.
+        case "a":
+            window.location.href = searchLinks.amazon + queryString.join("+");
             break;
-        case "-y":
-            query = query.substr(3);
-            window.location =
-                "https://www.youtube.com/results?search_query=" +
-                query.replaceChars(" ", "+");
+        case "g":
+            window.location.href = searchLinks.github + queryString.join("+");
             break;
-        case "-w":
-            query = query.substr(3);
-            window.location =
-                "https://en.wikipedia.org/w/index.php?search=" +
-                query.replaceChars(" ", "%20");
+        case "r":
+            window.location.href = searchLinks.reddit + queryString.join("+");
             break;
-        case "-m":
-            query = query.substr(3);
-            window.location = 
-            "http://www.wolframalpha.com/input/?i=" + 
-            query.replaceChars("+", "%2B");
+        case "s":
+            window.location.href = searchLinks.stackoverflow + queryString.join("+");
             break;
-        case "-h":
-            query=query.substr(3);
-            window.location = 
-            "http://alpha.wallhaven.cc/search?q=" + 
-            query.concat("&categories=111&purity=100&resolutions=1920x1080&sorting=relevance&order=desc");
+        case "y":
+            window.location.href = searchLinks.youtube + queryString.join("+");
+            break;
+        case "w":
+            window.location.href = searchLinks.wikipedia + queryString.join("%20");
+            break;
+        case "4a":
+            window.location.href = searchLinks.chan.replace('&', 'a') + queryString.join("+");
+            break;
+        case "4ck":
+            window.location.href = searchLinks.chan.replace('&', 'ck') + queryString.join("+");
+            break;
+        case "4g":
+            window.location.href = searchLinks.chan.replace('&', 'g') + queryString.join("+");
+            break;
+        case "4w":
+            window.location.href = searchLinks.chan.replace('&', 'w') + queryString.join("+");
+            break;
+        case "4wg":
+            window.location.href = searchLinks.chan.replace('&', 'wg') + queryString.join("+");
             break;
         default:
-            window.location="https://www.google.com/#q=" +
-                query.replaceChars(" ", "+");
+            window.location.href = searchLinks.duckduckgo + param + " " + queryString.join("+"); // Hacky, but it works :D
     }
 }
- 
+
 window.onload = function(){
-    // search
-    searchinput = document.getElementById("searchbox");
-    if(!!searchinput){
-        searchinput.addEventListener("keypress", function(a){
-            var key = a.keyCode;
-            if(key == 13){
-                var query = this.value;
-                search(query);
-            }
+    var searchInput = document.getElementById("searchbox");
+    if(searchInput){
+        searchInput.addEventListener("keypress", function(key){
+            if(key.keyCode === 13) // If enter button pressed (I'm assuming)
+                search(this.value);
         });
     }
-    // jump to search when tab is pressed
-    var search_sqr = document.getElementById("search_sqr");
-}
+};

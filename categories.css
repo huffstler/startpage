@@ -1,9 +1,9 @@
 body { 
-		background-color:#eceff1;
+		background-color: #ECEFF1;
 }
 	
 #title {
-	font-family: 'Baloo Bhaina';
+	font-family: 'Baloo Bhaina', 'Consolas', 'cursive';
 	font-size: 50px;
 	text-align: center;
 	color: #333;
@@ -22,7 +22,7 @@ body {
 	background-color: white;
 	color: #333;
 	font-size: 16px;
-	font-family: 'Malgun Gothic';
+	font-family: 'Malgun Gothic', 'consolas', 'cursive';
 	display: block;
 	margin: auto;
 	margin-top: 20px;
@@ -40,11 +40,11 @@ body {
 }
 
 #mainframe {
+	margin: auto;
 	text-align: center;
-	position: absolute;
-	top: 25%;
-	left:16%;
-	right:11%;
+	width: 100vw;
+	/*position: absolute;*/
+	/*top: 25%;*/
 }
 
 .linkblock {
@@ -56,13 +56,13 @@ body {
 	margin-bottom:40px;
 	padding-left:67px;
 	padding-right:1px;
-	padding-top:0px;
+	padding-top:0;
 	padding-bottom:5px;
 	color:#000;
 	text-align: left;
-	background-position:top 0px left 0px;; 
+	background-position:top 0 left 0;
 	background-repeat:no-repeat;
-	font-family: 'Malgun Gothic';
+	font-family: 'Malgun Gothic', 'consolas', 'cursive';
 	font-size:100%;
 	display: inline-block;
 	vertical-align: top;
