@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'orkneyregular';
+    src: url('orkney-regular-webfont.eot');
+    src: url('orkney-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('orkney-regular-webfont.woff2') format('woff2'),
+         url('orkney-regular-webfont.woff') format('woff'),
+         url('orkney-regular-webfont.ttf') format('truetype'),
+         url('orkney-regular-webfont.svg#orkneyregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body { 
+	background-color: #ECEFF1;
+}
+	
+#title {
+	font-family: 'orkneyregular', 'Consolas', 'cursive';
+	font-size: 50px;
+	text-align: center;
+	color: #333;
+	margin-top: 50px;
+}
+
+#mainframe {
+	text-align: center;
+	margin: 5vh 4vw 0 15vw;
+}
+
+.linkblock {
+	width:20%;
+	height:140px;
+	margin-left:25px;
+	margin-right:30px;
+	margin-top:30px;
+	margin-bottom:40px;
+	padding-left:67px;
+	padding-right:1px;
+	padding-top:0;
+	padding-bottom:5px;
+	color:#000;
+	text-align: left;
+	background-position:top 0 left 0;
+	background-repeat:no-repeat;
+	font-family: 'Malgun Gothic', 'consolas', 'cursive';
+	font-size:100%;
+	display: inline-block;
+	vertical-align: top;
+	border-left: 3px solid #607d8b;
+}
+
+ul { 
+	list-style-type: none;
+	padding-left: 0;
+} 
+
+a:link, a:visited, a:hover, a:active, a:focus { text-decoration:none; font-weight:normal; color:#333; }
